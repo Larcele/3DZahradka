@@ -1,1 +1,4 @@
 # 3D zahradka readme
+
+link na podobny projekt 
+https://github.com/space10-community/the-growroom
