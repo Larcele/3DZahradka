@@ -8,7 +8,7 @@ rG = 10 * delta; //r gule
 distance = 7 * delta;
 startY = 5 * delta;
 pCount = 1 * delta; //pocet policiek
-
+rotationPts = 360 / 4;
 
 
 difference() {
@@ -50,5 +50,38 @@ translate([0, 0, startY + distance + rG]) {
 }
 
 
+SphereOutline(8);
 
-//}
+rotate([0,0,rotationPts]) {
+    SphereOutline(8);
+}
+rotate([0,0,rotationPts * 2]) {
+    SphereOutline(8);
+}
+rotate([0,0,rotationPts * 3]) {
+    SphereOutline(8);
+}
+rotate([0,0,rotationPts * 4]) {
+    SphereOutline(8);
+}
+
+module SphereOutline(width)
+{
+    difference() {
+        translate([0, 0, startY + distance]) {
+            sphere(rG, center=true);
+        }
+        
+        translate([width, 0, startY + distance]) {
+            sphere(rG, center=true);
+        }
+        
+        translate([0, width, startY + distance]) {
+            sphere(rG, center=true);
+        }
+        
+        translate([-width, 0, startY + distance]) {
+            sphere(rG, center=true);
+        }
+    }
+}
