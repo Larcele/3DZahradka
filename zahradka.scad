@@ -9,6 +9,7 @@ distance = 7 * delta;
 startY = 5 * delta;
 pCount = 1 * delta; //pocet policiek
 rotationPts = 360 / 4;
+sphereOutlineWidth = 8 * delta* 0.5;
 
 
 difference() {
@@ -50,19 +51,19 @@ translate([0, 0, startY + distance + rG]) {
 }
 
 
-SphereOutline(8);
+SphereOutline(sphereOutlineWidth);
 
 rotate([0,0,rotationPts]) {
-    SphereOutline(8);
+    SphereOutline(sphereOutlineWidth);
 }
 rotate([0,0,rotationPts * 2]) {
-    SphereOutline(8);
+    SphereOutline(sphereOutlineWidth);
 }
 rotate([0,0,rotationPts * 3]) {
-    SphereOutline(8);
+    SphereOutline(sphereOutlineWidth);
 }
 rotate([0,0,rotationPts * 4]) {
-    SphereOutline(8);
+    SphereOutline(sphereOutlineWidth);
 }
 
 module SphereOutline(width)
