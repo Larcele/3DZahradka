@@ -46,44 +46,73 @@ module SphereShelves() {
 }
 
 //podstava
-translate([0, 0, startY + distance - rG]) {
-    cylinder(h=vO, r=vP*6, center=true);
+module EdgeShelf()
+difference() {
+    translate([0, 0, startY + distance - rG]) {
+        cylinder(h=vO, r=vP*6, center=true);
+    }
+    union() {
+        SphereVertical();
+        rotate([0,0,90]) {
+            SphereVertical();
+            }
+    }
 }
 
-//vrch
+/*vrch
 translate([0, 0, startY + distance + rG]) {
     cylinder(h=vO, r=vP*6, center=true);
 }
+*/
 
 //zvisly panel
 
 module SphereVertical() {
     difference() {
-        union() {
-            difference() {
-                translate([0, 0, startY + distance]) {
-                    rotate([0,90,0]) {
-                        resize(newsize = [0,nSout,0]) cylinder(h=vO, r = rZ, center=true);
+        difference() {
+            union() {
+                difference() {
+                    translate([0, 0, startY + distance]) {
+                        rotate([0,90,0]) {
+                            resize(newsize = [0,nSout,0]) cylinder(h=vO, r = rZ, center=true);
+                        }
                     }
+                    
+                    translate([0, 0, startY + distance]) {
+                        rotate([0,90,0]) {
+                            resize(newsize = [0,nSin,0]) cylinder(h=vO+1, r = rZ*0.7, center=true);
+                        }
+                    }
+                }
+
+                translate([0, 0, startY + distance +rZ]) {
+                        cube([vO,6,5], center=true);
                 }
                 
-                translate([0, 0, startY + distance]) {
-                    rotate([0,90,0]) {
-                        resize(newsize = [0,nSin,0]) cylinder(h=vO+1, r = rZ*0.7, center=true);
-                    }
+                translate([0, 0, startY + distance -rZ]) {
+                        cube([vO,6,5], center=true);
                 }
             }
-
-            translate([0, 0, startY + distance +rZ]) {
-                    cube([vO,6,5], center=true);
-            }
-            
-            translate([0, 0, startY + distance -rZ]) {
-                    cube([vO,6,5], center=true);
-            }
+            SphereShelves();
         }
-        SphereShelves();
+        translate([0, 0, startY + distance]) {
+            cube([vO+0.1,2.5,42], center=true);
+        }
     }
 }
 
+// umiestnim vsetko vodorovne
+SphereShelves();
+EdgeShelf();
+ translate([0, 12, 0]) {
+     EdgeShelf();
+ }
+rotate([0,90,0]) { 
+    SphereVertical();
+}
 
+ translate([0, 40, 0]) {
+    rotate([0,90,0]) { 
+        SphereVertical();
+    }
+}
