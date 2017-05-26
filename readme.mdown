@@ -2,3 +2,11 @@
 
 link na podobny projekt 
 https://github.com/space10-community/the-growroom
+
+Súbory sú robené v programe openSCAD a teda parametrické a ku každému prislúcha vyexportovaný STL model pripravený na tlač.
+Najvhodnejšie rozmery pre model sú 65 x 60 x 60 mm.
+Popisy súborov:
+edgeshelves2 - okrajové kruhy
+horizontal - horizontálne kruhy
+vertical - vertikálne oblúky
+v každom súbore sú k dispozícií aj finálne počty dielikov čiže stačí jednorázovo tlačiť tieto 3 súbory. Ostatné súbory sú pôvodné zdroje a slúžia len na inšpiráciu.
